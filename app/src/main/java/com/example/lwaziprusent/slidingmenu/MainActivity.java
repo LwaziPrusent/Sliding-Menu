@@ -22,26 +22,26 @@ public class MainActivity extends SherlockActivity {
 
         // First Menu Button
         menu.add("Help")
-                .setOnMenuItemClickListener(this.HelpButtonClickListener)
+                .setOnMenuItemClickListener(this.helpButtonClickListener)
                 .setIcon(R.drawable.help_button) // Set the menu icon
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
         // Second Menu Button
         menu.add("Like")
-                .setOnMenuItemClickListener(this.LikeButtonClickListener)
+                .setOnMenuItemClickListener(this.likeButtonClickListener)
                 .setIcon(R.drawable.like_button) // Set the menu icon
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
         // Third Menu Button
         menu.add("Exit")
-                .setOnMenuItemClickListener(this.ExitButtonClickListener)
+                .setOnMenuItemClickListener(this.exitButtonClickListener)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
         return super.onCreateOptionsMenu(menu);
     }
 
     // Capture first menu button click
-    OnMenuItemClickListener HelpButtonClickListener = new OnMenuItemClickListener() {
+    OnMenuItemClickListener helpButtonClickListener = new OnMenuItemClickListener() {
 
         public boolean onMenuItemClick(MenuItem item) {
 
@@ -55,7 +55,7 @@ public class MainActivity extends SherlockActivity {
     };
 
     // Capture second menu button click
-    OnMenuItemClickListener LikeButtonClickListener = new OnMenuItemClickListener() {
+    OnMenuItemClickListener likeButtonClickListener = new OnMenuItemClickListener() {
 
         public boolean onMenuItemClick(MenuItem item) {
             // Create a simple toast message
@@ -68,7 +68,7 @@ public class MainActivity extends SherlockActivity {
     };
 
     // Capture third menu button click
-    OnMenuItemClickListener ExitButtonClickListener = new OnMenuItemClickListener() {
+    OnMenuItemClickListener exitButtonClickListener = new OnMenuItemClickListener() {
 
         public boolean onMenuItemClick(MenuItem item) {
             // Create a simple toast message
