@@ -54,14 +54,22 @@ android {
 
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
 
+
+dependencies {
     /*Unit Testing*/
     testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:1.9.5"
-
+    testCompile 'org.mockito:mockito-core:1.9.5'
     compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
     compile 'com.android.support:support-v4:22.0.+'
+}
+
+sourceSets {
+
+    test {
+        java {
+            srcDirs = ["src/androidTest/java"]  // Note @Peter's comment below
+        }
+    }
 
 }
