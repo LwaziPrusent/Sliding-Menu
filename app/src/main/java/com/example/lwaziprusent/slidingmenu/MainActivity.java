@@ -1,14 +1,14 @@
 package com.example.lwaziprusent.slidingmenu;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.MenuItem.OnMenuItemClickListener;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Toast;
 
-public class MainActivity extends SherlockActivity {
+import org.androidannotations.annotations.Fullscreen;
+
+@Fullscreen
+public class MainActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -16,68 +16,13 @@ public class MainActivity extends SherlockActivity {
         // Get the view from activity_main.xml
         setContentView(R.layout.activity_main);
 
+        SlidingMenu menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menu.setFadeDegree(0.35f);
+        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        menu.setMenu(R.layout.menu);
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // First Menu Button
-        menu.add("Help")
-                .setOnMenuItemClickListener(this.helpButtonClickListener)
-                .setIcon(R.drawable.help_button) // Set the menu icon
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
-        // Second Menu Button
-        menu.add("Like")
-                .setOnMenuItemClickListener(this.likeButtonClickListener)
-                .setIcon(R.drawable.like_button) // Set the menu icon
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
-        // Third Menu Button
-        menu.add("Exit")
-                .setOnMenuItemClickListener(this.exitButtonClickListener)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    // Capture first menu button click
-    OnMenuItemClickListener helpButtonClickListener = new OnMenuItemClickListener() {
-
-        public boolean onMenuItemClick(MenuItem item) {
-
-            // Create a simple toast message
-            Toast.makeText(MainActivity.this, "Help Button", Toast.LENGTH_SHORT)
-                    .show();
-
-            // Do something else
-            return false;
-        }
-    };
-
-    // Capture second menu button click
-    OnMenuItemClickListener likeButtonClickListener = new OnMenuItemClickListener() {
-
-        public boolean onMenuItemClick(MenuItem item) {
-            // Create a simple toast message
-            Toast.makeText(MainActivity.this, "Like Button", Toast.LENGTH_SHORT)
-                    .show();
-
-            // Do something else
-            return false;
-        }
-    };
-
-    // Capture third menu button click
-    OnMenuItemClickListener exitButtonClickListener = new OnMenuItemClickListener() {
-
-        public boolean onMenuItemClick(MenuItem item) {
-            // Create a simple toast message
-            Toast.makeText(MainActivity.this, "Exit Button", Toast.LENGTH_SHORT)
-                    .show();
-
-            // Do something else
-            return false;
-        }
-    };
 }

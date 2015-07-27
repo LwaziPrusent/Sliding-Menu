@@ -37,20 +37,17 @@ android {
 
 }
 
-
-
 dependencies {
+    compile 'com.android.support:appcompat-v7:22.2.1'
+
     compile(project(':libraries:slidingmenu')) {
-        transitive = false
+        exclude module: "com.android.support:appcompat-v7"
     }
+    compile "org.androidannotations:androidannotations-api:3.3.2"
 
     /*Unit Testing*/
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.9.5'
-
-    compile ('com.actionbarsherlock:actionbarsherlock:4.4.0@aar')   {
-        exclude module: "com.android.support:appcompat-v7"
-    }
 
 }
 
