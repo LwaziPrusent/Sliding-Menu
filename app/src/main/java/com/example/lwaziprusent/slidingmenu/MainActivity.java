@@ -15,6 +15,7 @@ public class MainActivity extends SherlockActivity {
         super.onCreate(savedInstanceState);
         // Get the view from activity_main.xml
         setContentView(R.layout.activity_main);
+
     }
 
     @Override

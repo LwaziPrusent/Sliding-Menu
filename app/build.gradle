@@ -25,30 +25,12 @@ android {
         xmlOutput file("lint-report.xml")
     }
 
-    sonarRunner {
-        sonarProperties {
-            property "sonar.projectKey","com.example.lwaziprusent.slidingmenu"
-            property "sonar.projectName","slidingmenu"
-            property "sonar.projectVersion","1.0"
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
 
-            property "sonar.host.url", "http://localhost:9000"
-            property "sonar.analysis.mode", "analysis"
-            property "sonar.sourceEncoding", "UTF-8"
-            property "sonar.scm.provider","git"
-
-            property "sonar.sources","src/main/java"
-            property "sonar.tests","src/androidTest/java"
-
-            property "sonar.sourceEncoding","UTF-8"
-        }
-    }
-
-    subprojects {
-        sonarRunner {
-            sonarProperties {
-                properties["sonar.sources"] += "src/main/java"
-                properties["sonar.tests"] += "src/androidTest/java"
-            }
+            manifest.srcFile 'src/main/AndroidManifest.xml'
         }
     }
 
@@ -57,19 +39,39 @@ android {
 
 
 dependencies {
+    compile project(':libraries:slidingmenu')
+
     /*Unit Testing*/
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.9.5'
+
     compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
     compile 'com.android.support:support-v4:22.0.+'
 }
 
-sourceSets {
+sonarRunner {
+    sonarProperties {
+        property "sonar.projectKey","com.example.lwaziprusent.slidingmenu"
+        property "sonar.projectName","slidingmenu"
+        property "sonar.projectVersion","1.0"
 
-    test {
-        java {
-            srcDirs = ["src/androidTest/java"]  // Note @Peter's comment below
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.analysis.mode", "analysis"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.scm.provider","git"
+
+        property "sonar.sources","src/main/java"
+        property "sonar.tests","src/androidTest/java"
+
+        property "sonar.sourceEncoding","UTF-8"
+    }
+}
+
+subprojects {
+    sonarRunner {
+        sonarProperties {
+            properties["sonar.sources"] += "src/main/java"
+            properties["sonar.tests"] += "src/androidTest/java"
         }
     }
-
 }
